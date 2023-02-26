@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css">
+   <script src="https://kit.fontawesome.com/8c0174aec1.js" crossorigin="anonymous"></script>
+   <script src="https://fe.it-academy.by/JQ/jquery.js"></script>
+   <title>SIMPLEPAINT</title>
+</head>
+
+<body>
+   <div class="header">
+      <div class="container">
+         <!-- <a href="#" id="open"><img src="img/open.png" alt="open"></a> -->
+         <a href="#" id="save"><img src="img/diskette.png" alt="save"></a>
+         <a href="#" id="download"><img src="img/download.png" alt="download"></a>
+         <a href="#" id="brush" class="selected"><img src="img/paint-brush.png" alt="brush"
+               onclick="changeTool('brush')"></a>
+         <a href="#" id="line"><img src="img/diagonal-line.png" alt="line" onclick="changeTool('line')"></a>
+         <a href="#" id="rectangle"><img src="img/rectangle.png" alt="rectangle" onclick="changeTool('rectangle')"></a>
+         <a href="#" id="circle"><img src="img/circle.png" alt="circle" onclick="changeTool('circle')"></a>
+         <a href="#" id="ellipse"><img src="img/ellipse.png" alt="ellipse" onclick="changeTool('ellipse')"></a>
+         <a href="#" id="polygon"><img src="img/polygon.png" alt="polygon" onclick="changeTool('polygon')"></a>
+         <a href="#" id="eraser"><img src="img/eraser.png" alt="eraser" onclick="changeTool('eraser')"></a>
+         <a href="#" id="shapes"><img src="img/shapes.png" alt="shapes" onclick="changeTool('shapes')"></a>
+         <a href="#" id="previous"><img src="img/previous.png" alt="previous"></a>
+         <a href="#" id="next"><img src="img/next.png" alt="next"></a>
+      </div>
+   </div>
+   <div class="main">
+      <div class="container">
+         <div class="side_menu">
+            <div class="side_wrapper">
+               <div class="color">
+                  <p>Color</p>
+                  <input type="color" id="colorPicker" value="#000000">
+                  <div class="favorite-colors" id="favorite-colors">
+                     <div id="color-square" class="color-square" data-color="#ffffff" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#c3c3c3" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#585858" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square active" data-color="#000000"
+                        onclick="selectColor(this)">
+                     </div>
+                     <div id="color-square" class="color-square" data-color="#88001b" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#ec1c24" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#ff7f27" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#ffca18" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#fdeca6" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#fff200" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#c4ff0e" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#0ed145" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#8cfffb" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#00a7f3" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#3f48cc" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#b83dba" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#ffaec8" onclick="selectColor(this)"></div>
+                     <div id="color-square" class="color-square" data-color="#b97a56" onclick="selectColor(this)"></div>
+                  </div>
+               </div>
+               <div class="color">
+                  <p>Background color</p>
+                  <input type="color" id="bgPicker" value="#ffffff">
+                  <div class="favorite-bg-colors">
+                     <div class="color-bg-square active" data-color="#ffffff" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#c3c3c3" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#585858" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#000000" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#88001b" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#ec1c24" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#ff7f27" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#ffca18" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#fdeca6" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#fff200" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#c4ff0e" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#0ed145" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#8cfffb" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#00a7f3" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#3f48cc" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#b83dba" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#ffaec8" onclick="selectBgColor(this)"></div>
+                     <div class="color-bg-square" data-color="#b97a56" onclick="selectBgColor(this)"></div>
+                  </div>
+               </div>
+               <div class="buttonSize">
+                  <p>Size (<span id="showSize">5</span>)</p>
+                  <input type="range" min="1" max="50" value="5" step="1" id="lineSize">
+               </div>
+               <div class="buttonOpas">
+                  <p>Opacity (<span id="showOpas">1</span>)</p>
+                  <input type="range" min="0" max="1" value="1" step="0.01" id="opacity">
+               </div>
+               <div class="canvasSize">
+                  <p>Canvas</p>
+                  <div class="input-group">
+                     <span class="input-group-addon">X</span>
+                     <input type="number" id="sizeX" class="form-control" placeholder="sizeX" min="100" max="1500"
+                        value="800" class="size">
+                  </div>
+                  <div class="input-group">
+                     <span class="input-group-addon">Y</span>
+                     <input type="number" id="sizeY" class="form-control" placeholder="sizeY" min="100" max="1500"
+                        value="800" class="size">
+                  </div>
+                  <input type="button" class="updateSize btn" value="Update" id="canvasUpdate">
+               </div>
+               <div class="clearBtn">
+                  <input type="button" class="clear btn" value="Clear" id="clear">
+               </div>
+               <div class="openBtn">
+                  <label for="file-upload" class="btn load">
+                     Upload
+                  </label>
+                  <input id="file-upload" type="file" accept="image/png" />
+               </div>
+               <div class="downloadBtn">
+                  <a type="button" class="download btn" id="downloadBtn">Download</a>
+               </div>
+            </div>
+         </div>
+         <div class="content">
+            <div id="content_wrapper" class="content_wrapper">
+               <canvas id="myCanvas"></canvas>
+            </div>
+         </div>
+         <div class="side_menu right_menu" id="right_menu">
+            <div class="side_wrapper">
+               <div class="color">
+                  <p>Stroke color</p>
+                  <input type="color" id="shape_stroke_color" value="#000000">
+               </div>
+               <div class="color">
+                  <p>Fill color</p>
+                  <input type="color" id="shape_fill_color" value="#7f3434">
+               </div>
+               <div class="canvasSize">
+                  <p>Shape size</p>
+                  <div class="input-group">
+                     <input type="number" id="shape_size" class="form-control" placeholder="shape_size" value="50"
+                        class="size">
+                  </div>
+                  <p>Inner size</p>
+                  <div class="input-group">
+                     <input type="number" id="inner_size" class="form-control" placeholder="inner_size" value="0.5"
+                        step="0.1" class="size">
+                  </div>
+                  <p>Number of sides</p>
+                  <div class="input-group">
+                     <input type="number" id="sides_number" class="form-control" placeholder="sides_number" value="4"
+                        class="size">
+                  </div>
+                  <p>Rotation speed</p>
+                  <div class="input-group">
+                     <input type="number" id="shape_rotation" class="form-control" placeholder="shape_rotation"
+                        value="0.1" step="0.01" class="size">
+                  </div>
+                  <p>Stroke size</p>
+                  <div class="input-group">
+                     <input type="number" id="shape_stroke_size" class="form-control" placeholder="shape_stroke_size"
+                        min="1" max="50" value="5" step="1">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>
